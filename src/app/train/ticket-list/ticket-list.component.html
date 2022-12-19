@@ -1,0 +1,45 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+    <ngb-panel
+      *ngFor="let ticket of tickets"
+      title="{{ ticket.from }}({{
+        ticket.departure | date : 'dd.MM.yyyy HH:mm'
+      }}) - {{ ticket.to }} ({{ ticket.arrival | date : 'dd.MM.yyyy HH:mm' }})"
+    >
+      <ng-template ngbPanelContent>
+        <div class="row">
+          <div class="col-8">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Train Number</th>
+                  <th>{{ ticket.number }}</th>
+                </tr>
+                <tr>
+                  <th scope="col">Price</th>
+                  <th>{{ ticket.price }}</th>
+                </tr>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th>{{ ticket.name }}</th>
+                </tr>
+                <tr>
+                  <th scope="col">Birth Date</th>
+                  <th>{{ ticket.birthDate | date : "dd.MM.YYYY" }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col">
+            <img src="../../../assets/images/qr.png" alt="" />
+          </div>
+        </div>
+        <button class="btn btn-danger" (click)="deleteTickets(ticket._id)">
+          Cancel
+        </button>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  
